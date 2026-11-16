@@ -13,7 +13,7 @@ Perhaps additional demos will be added to demonstrate these facts:
 
 * `vm_type` causes multiple Lua contexts to be allocated for the same script, but it only affects `script_source_file`. Other `script_*` fields are unaffected.
 * How `script_source_file` (>0, -1) works.
-* `enable_coroutines` just causes the `wake_up_waiting_threads()` callback to be run.
+* `enable_coroutines` just causes the `wake_up_waiting_threads()` callback to be run every frame.
   It doesn't force you to use `data/scripts/lib/coroutines.lua`.
   You can use this as a more convenient callback than `execute_every_n_frame=1`,
   which reruns the main chunk.
