@@ -5,9 +5,9 @@ Demonstrates:
 * The script runs in its own Lua context which is shared between `LuaComponent`/entities,
   and that means the `counter` variable is shared too.
 * The script gets loaded when its callback is first invoked,
-  not the entity with the script is loaded.
+  not when the entity with the script is loaded.
 * `GetUpdatedComponentID()` returns zero when a script is loaded but `GetUpdatedEntityID()` does not.
-  (I wouldn't make use of that fact anyway, since you should just call the function in callbacks. `execute_every_n_frame` makes this more confusing though).
+  (Weird. I wouldn't make use of that fact, since you should just call the function in the callbacks. If you must use `execute_every_n_frame`/`execute_on_added`/`execute_on_removed` then that complicates this guidance though).
 
 Perhaps additional demos will be added to demonstrate these facts:
 
@@ -20,3 +20,9 @@ Perhaps additional demos will be added to demonstrate these facts:
 * When one `LuaComponent` callback triggers another callback,
   after that callback returns `GetUpdatedComponentID()` will return 0 and also breaks the component variable functions
   (`{Set,Get}Value{Number,Integer,Bool}`, e.g., `SetValueNumber`, `GetValueBool`).
+
+  This is why you should call these functions at the top of the callback, if possible,
+  or avoid invoking other callbacks.
+
+  A simple way to cause this to happen is to damage an entity in your callback.
+  If that entity has a damage script then that will be invoked.
