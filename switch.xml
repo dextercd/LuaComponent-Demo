@@ -1,0 +1,7 @@
+<Entity>
+    <SpriteComponent image_file="data/ui_gfx/cross_red.png" />
+    <InteractableComponent ui_text="Activate" />
+    <LuaComponent
+        script_interacting="mods/LuaComponent-Demo/switch.lua"
+        />
+</Entity>
