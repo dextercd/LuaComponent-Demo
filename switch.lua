@@ -3,7 +3,11 @@ local counter = 1
 function print_counter()
     local ent = GetUpdatedEntityID()
     local comp = GetUpdatedComponentID()
-    GamePrint("Counter: " .. counter .. ", Ent: " .. ent .. ", Comp: " .. comp)
+
+    local text = "Counter: " .. counter .. ", Ent: " .. ent .. ", Comp: " .. comp
+    GamePrint(text)
+    print(text)
+
     counter = counter + 1
 end
 
